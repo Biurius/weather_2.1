@@ -33,6 +33,18 @@ function showcurrentTemp(response) {
   celsiusTemperature = response.data.main.temp;
   minCelsiusTemperature = response.data.main.temp_min;
   maxCelsiusTemperature = response.data.main.temp_max;
+
+  let currentHumidity = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${currentHumidity}`;
+
+  let currentWindspeed = response.data.wind.speed;
+  let windspeedElement = document.querySelector("#wind-speed");
+  windspeedElement.innerHTML = `${currentWindspeed}`;
+
+  let currentDescription = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#weather-description");
+  descriptionElement.innerHTML = `${currentDescription}`;
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
@@ -94,6 +106,18 @@ function selectCity(response) {
   celsiusTemperature = response.data.main.temp;
   minCelsiusTemperature = response.data.main.temp_min;
   maxCelsiusTemperature = response.data.main.temp_max;
+
+  let currentHumidity = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${currentHumidity}`;
+
+  let currentWindspeed = response.data.wind.speed;
+  let windspeedElement = document.querySelector("#wind-speed");
+  windspeedElement.innerHTML = `${currentWindspeed}`;
+
+  let currentDescription = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#weather-description");
+  descriptionElement.innerHTML = `${currentDescription}`;
 }
 
 function showgeoTemp(event) {
