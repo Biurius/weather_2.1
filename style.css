@@ -1,0 +1,106 @@
+.container {
+  display: block;
+  background: #f7f2f7a6;
+  max-width: 900px;
+  padding: 40px;
+  border-radius: 10px;
+  margin: 100px auto 20px auto;
+  box-shadow: 1px 1px 1px 1px rgba(37, 39, 89, 0.09);
+  text-align: center;
+}
+.logo {
+  display: block;
+  opacity: 0.6;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+form {
+  margin-bottom: 25px;
+}
+.buttongo {
+  border-radius: 6px;
+  border: #f7f2f7;
+  height: 40px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: thin;
+  width: 180px;
+  transition: all 200ms ease-in-out;
+}
+.buttongo:hover {
+  background: white;
+  cursor: pointer;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 50px;
+  color: rgb(70, 62, 62);
+  margin-bottom: -5px;
+  text-align: left;
+}
+.day {
+  font-family: "Noto Sans Mono", monospace;
+  font-weight: bolder;
+  text-align: left;
+}
+.temperaturenow {
+  font-family: "Roboto", sans-serif;
+  color: rgb(70, 62, 62);
+  font-size: 50px;
+}
+.daytemperatures {
+  font-family: "Noto Sans Mono", monospace;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
+}
+.forecast {
+  margin-top: 60px;
+}
+h6 {
+  font-family: "Roboto", sans-serif;
+  color: rgb(70, 62, 62);
+}
+.maxemin {
+  font-family: "Noto Sans Mono", monospace;
+  margin-top: 4px;
+}
+.geo {
+  margin-top: 40px;
+  border-radius: 6px;
+  border: #f7f2f7;
+  height: 40px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: thin;
+  width: 250px;
+  transition: all 200ms ease-in-out;
+}
+.geo:hover {
+  background: white;
+  cursor: pointer;
+}
+.footer {
+  text-align: center;
+  font-family: "Noto Sans Mono", monospace;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.temperaturenow .active {
+  color: rgb(70, 62, 62);
+  cursor: default;
+  text-decoration: none;
+}
+
+.temperaturenow .active:hover {
+  text-decoration: none;
+}
