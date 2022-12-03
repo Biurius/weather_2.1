@@ -22,7 +22,17 @@ function showcurrentTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  let currentmax = Math.round(response.data.main.temp_max);
+  let changecurrentmax = document.querySelector("#temp-max");
+  changecurrentmax.innerHTML = `${currentmax}`;
+  let currentmin = Math.round(response.data.main.temp_min);
+  let changecurrentmin = document.querySelector("#temp-min");
+  changecurrentmin.innerHTML = `${currentmin}`;
+
   celsiusTemperature = response.data.main.temp;
+  minCelsiusTemperature = response.data.main.temp_min;
+  maxCelsiusTemperature = response.data.main.temp_max;
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
@@ -82,6 +92,8 @@ function selectCity(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   celsiusTemperature = response.data.main.temp;
+  minCelsiusTemperature = response.data.main.temp_min;
+  maxCelsiusTemperature = response.data.main.temp_max;
 }
 
 function showgeoTemp(event) {
@@ -103,6 +115,12 @@ function changeCel(event) {
   temperaturecelsius.innerHTML = Math.round(celsiusTemperature);
   tempDegrees.classList.add("active");
   tempFaren.classList.remove("active");
+
+  let minTemperaturecelsius = document.querySelector("#temp-min");
+  minTemperaturecelsius.innerHTML = Math.round(minCelsiusTemperature);
+
+  let maxTemperaturecelsius = document.querySelector("#temp-max");
+  maxTemperaturecelsius.innerHTML = Math.round(maxCelsiusTemperature);
 }
 
 function changeFar(event) {
@@ -112,6 +130,14 @@ function changeFar(event) {
   temperatureElement.innerHTML = Math.round(temperature);
   tempDegrees.classList.remove("active");
   tempFaren.classList.add("active");
+
+  let minTemperatureElement = document.querySelector("#temp-min");
+  let mintemperature = (minCelsiusTemperature * 9) / 5 + 32;
+  minTemperatureElement.innerHTML = Math.round(mintemperature);
+
+  let maxTemperatureElement = document.querySelector("#temp-max");
+  let maxtemperature = (maxCelsiusTemperature * 9) / 5 + 32;
+  maxTemperatureElement.innerHTML = Math.round(maxtemperature);
 }
 
 let form = document.querySelector("#city-search");
@@ -130,3 +156,5 @@ let tempFaren = document.querySelector("#far");
 tempFaren.addEventListener("click", changeFar);
 
 let celsiusTemperature = null;
+let minCelsiusTemperature = null;
+let maxCelsiusTemperature = null;
