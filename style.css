@@ -109,3 +109,7 @@ a:hover {
 .fulldescription {
   font-size: 11px;
 }
+
+#weather-description {
+  text-transform: capitalize;
+}
