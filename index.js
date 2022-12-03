@@ -1,20 +1,31 @@
-let now = new Date();
-let h2 = document.querySelector("#current-time");
+function showPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "ce42a02472a5d3bb424243005811a2d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(`${apiUrl}`).then(showcurrentTemp);
+}
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-let minutes = now.getMinutes();
+function showcurrentTemp(response) {
+  let actualtemp = Math.round(response.data.main.temp);
+  let heading = document.querySelector("#temp-now");
+  heading.innerHTML = `${actualtemp}`;
+  let dateElement = document.querySelector("#current-time");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
-h2.innerHTML = `${day}, ${hours}:${minutes}`;
+  let currentcity = response.data.name;
+  let changecity = document.querySelector("#city-now");
+  changecity.innerHTML = `${currentcity}`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  celsiusTemperature = response.data.main.temp;
+}
+
+navigator.geolocation.getCurrentPosition(showPosition);
 
 function search(event) {
   event.preventDefault();
@@ -84,25 +95,6 @@ function showPosition(position) {
   let apiKey = "ce42a02472a5d3bb424243005811a2d3";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showcurrentTemp);
-}
-
-function showcurrentTemp(response) {
-  let actualtemp = Math.round(response.data.main.temp);
-  let heading = document.querySelector("#temp-now");
-  heading.innerHTML = `${actualtemp}`;
-  let dateElement = document.querySelector("#current-time");
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-
-  let currentcity = response.data.name;
-  let changecity = document.querySelector("#city-now");
-  changecity.innerHTML = `${currentcity}`;
-
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  celsiusTemperature = response.data.main.temp;
 }
 
 function changeCel(event) {
