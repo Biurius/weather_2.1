@@ -133,6 +133,24 @@ function showPosition(position) {
   axios.get(`${apiUrl}`).then(showcurrentTemp);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["thu", "fri", "sat","sun", "mon"];
+  days.forEach(function(day){
+    forecastHTML =
+      forecastHTML +
+      `<div class="col align-self-center">
+          <h6>${day}</h6>
+          <img src="images/red/sun.png" alt="sunny" width="50" height="50" />
+          <p class="maxemin">26° | 22°</p>
+        </div>`;
+  })
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function changeCel(event) {
   event.preventDefault();
   let temperaturecelsius = document.querySelector("#temp-now");
@@ -182,3 +200,5 @@ tempFaren.addEventListener("click", changeFar);
 let celsiusTemperature = null;
 let minCelsiusTemperature = null;
 let maxCelsiusTemperature = null;
+
+displayForecast();
