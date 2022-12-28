@@ -46,6 +46,9 @@ function showcurrentTemp(response) {
   let descriptionElement = document.querySelector("#weather-description");
   descriptionElement.innerHTML = `${currentDescription}`;
   getForecast(response.data.coord);
+
+  tempDegrees.classList.add("active");
+  tempFaren.classList.remove("active");
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
@@ -160,6 +163,9 @@ function selectCity(response) {
   descriptionElement.innerHTML = `${currentDescription}`;
 
   getForecast(response.data.coord);
+
+  tempDegrees.classList.add("active");
+  tempFaren.classList.remove("active");
 }
 
 function showgeoTemp(event) {
